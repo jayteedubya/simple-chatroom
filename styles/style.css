@@ -1,0 +1,23 @@
+* { margin:0; padding:0; }
+#send-message {
+    position: fixed;
+    bottom: 1vh;
+    left: 1vh;
+    width: 90vh;
+    margin: 2vh;
+    max-height: 19vh;
+}
+#chat {
+    margin: 5mm;
+}
+#chat-list {
+    max-height: 80vh;
+    height: 80vh;
+    border: 1px solid rgb(0, 0, 0);
+    overflow: auto;
+    display:flex;
+    flex-direction:column-reverse;
+}
+li {
+    list-style: none;
+}

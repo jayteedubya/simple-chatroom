@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="styles/style.css">
+    <script type="text/javascript">
+        const gethandle = async () => {
+            const response = await fetch('/handle');
+            const jsonHandle = await response.json();
+            document.cookie = jsonHandle['handle'];
+            const displayName = document.createElement("p");
+            displayName.appendChild(document.createTextNode("speaking as: " + document.cookie));
+            document.getElementById("handle").appendChild(displayName);
+            return;
+        }
+        gethandle();
+        var HOST = location.origin.replace(/^http/, 'ws')
+        const socket = new WebSocket(HOST);
+        socket.onmessage = (event) => {
+            const message = event.data;
+            const serverMessage = document.createElement('li');
+            serverMessage.appendChild(document.createTextNode(JSON.parse(message).message));
+            serverMessage.setAttribute("class", "message");
+            document.getElementById("chat-list").appendChild(serverMessage);
+            document.getElementById("chat-list").scrollTop = document.getElementById("chat-list").scrollHeight;
+            return;
+        }
+        const sendMessage = () => {
+            const messageText = document.cookie + ": " + document.getElementById("message").value;
+            document.getElementById("message").value = "";
+            const message = JSON.stringify({message: messageText});
+            socket.send(message);
+            return;
+        }
+        const scrollTest = () => {
+            const message = document.cookie + ": " + "testing"
+            socket.send(JSON.stringify({ message }))
+        }
+    </script>
+</head>
+<body>
+    <div id="chat">
+        <ul id="chat-list">
+
+        </ul>
+    </div>
+    <div id="send-message">
+        <h4 id="handle"></h4>
+        <textarea id="message" rows="5" cols="100"></textarea>
+        <button onclick="sendMessage()"> send </button>
+    </div>
+</body>
