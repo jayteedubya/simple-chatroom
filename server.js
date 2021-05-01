@@ -15,7 +15,7 @@ const getNewHandle = () => {
     handles.push(handle);
     return handle;
 }
-const PORT = 3000 || process.env.PORT
+const PORT = process.env.PORT || 3000;
 const clients = []
 
 const chatSocket = new ws.Server({server, clientTracking: false});
