@@ -5,5 +5,25 @@
     "express": "^4.17.1",
     "random-words": "^1.1.1",
     "ws": "^7.4.5"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "easy-bake-chatroom",
+  "description": "this is a simple chatroom app",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {
+    "mocha": "^7.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayteedubya/simple-chatroom.git"
+  },
+  "author": "jacob williams",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/jayteedubya/simple-chatroom/issues"
+  },
+  "homepage": "https://github.com/jayteedubya/simple-chatroom#readme"
 }
